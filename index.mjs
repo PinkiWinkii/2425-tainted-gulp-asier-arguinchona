@@ -12,12 +12,17 @@ const execute = async () => {
         const playersData = await getCharactersData();
 
         const playersIngredientsPouch = playersData.players[0].pouch_yellow;
+
+        const yellowPouch =  playersData.players[0].pouch_yellow;
+        const redPouch =  playersData.players[0].pouch_red;
+        const greenPouch =  playersData.players[0].pouch_green;
+        const agedPouch =  playersData.players[0].pouch_aged;
         
         const ingredients = Ingredients.load(ingredientsData);
         
         const cauldron = new Cauldron(ingredients);
 
-        const potionBag = PotionBag.create(playersIngredientsPouch, cauldron);
+        const potionBag = PotionBag.create(yellowPouch, cauldron);
 
         const josephCharacter = Character.from(playersData.players[0], potionBag.potions);
         
