@@ -14,7 +14,7 @@ export default class Character{
 
     drinkEmAll()
     {
-        //this.showCharacterStats();
+        let josephWon = false;
 
         for(let i = 0; i < this.potions.length; i++)
         {
@@ -49,7 +49,8 @@ export default class Character{
     
                     case potionName.includes("Sanity"):
                         console.log(this.fullName + " has found the Potion of Sanity. His mind is healed. Well done!");
-                        
+                        i = this.potions.length;
+                        josephWon = true;
                         break;
     
                     case potionName.includes("Failed"):
@@ -63,8 +64,12 @@ export default class Character{
                 i = this.potions.length;
             }
 
-            this.showCharacterStats();
-            josephLost = this.checkIfDrinkingOver();
+            if(!josephWon)
+            {
+                this.showCharacterStats();
+                josephLost = this.checkIfDrinkingOver();
+            }
+
         }
     }
 
