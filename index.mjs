@@ -27,11 +27,16 @@ const execute = async () => {
         //console.log(potionBag);
 
         const josephCharacter = Character.from(playersData.players[0], potionBag.potions);
-        //showPotions(potionBag.potions)
         
-        //console.log(josephCharacter);
+        console.log("POTIONS OF THE BAG");
+        console.log(`--------------------------------`);
+        showPotions(potionBag.potions)
         
+        console.log('NEW CONTESTANT APPEARS');
+        console.log(`--------------------------------`);
         showCharacter(josephCharacter);
+        josephCharacter.drinkEmAll();
+
 
 
 

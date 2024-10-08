@@ -11,4 +11,108 @@ export default class Character{
     static from(playerData, potions){
         return new Character(playerData.name, playerData.class, playerData.health, playerData.magick, playerData.stamina, potions);
     }
+
+    drinkEmAll()
+    {
+        //this.showCharacterStats();
+
+        for(let i = 0; i < this.potions.length; i++)
+        {
+            let josephLost = this.checkIfDrinkingOver();
+            
+            if(!josephLost)
+            {
+                const potionName = this.potions[i].name;
+                let potionValue = this.potions[i].value;
+                let infoText = "gains";
+    
+                if(potionName.startsWith("Poison")){
+                    potionValue = -potionValue;
+                    infoText = "loses";
+                }
+    
+                switch(true){
+                    case potionName.includes("Health"):
+                        this.changeHealth(potionValue);
+                        this.printDrinkingMessageAndStats(potionName, infoText, potionValue, "health");
+                        break;
+    
+                    case potionName.includes("Magicka"):
+                        this.changeMagick(potionValue);
+                        this.printDrinkingMessageAndStats(potionName, infoText, potionValue, "magick");
+                        break;
+    
+                    case potionName.includes("Stamina"):
+                        this.printDrinkingMessageAndStats(potionName, infoText, potionValue, "stamina");
+                        this.changeStamina(potionValue);
+                        break;
+    
+                    case potionName.includes("Sanity"):
+                        console.log(this.fullName + " has found the Potion of Sanity. His mind is healed. Well done!");
+                        
+                        break;
+    
+                    case potionName.includes("Failed"):
+                        console.log(potionName + ". " + this.fullName + " cannot drink.");
+                        
+                        break;
+                }
+            }
+            else
+            {
+                i = this.potions.length;
+            }
+
+            this.showCharacterStats();
+            josephLost = this.checkIfDrinkingOver();
+        }
+    }
+
+    changeHealth(value)
+    {
+        this.health += value;
+    }
+
+    changeMagick(value)
+    {
+        this.magick += value;
+    }
+
+    changeStamina(value)
+    {
+        this.stamina += value;
+    }
+
+    checkIfDrinkingOver()
+    {
+        if(this.health <= 0){
+            console.log("Joseph's HP has fallen bellow 0. Joseph has fainted.");
+            return true;
+        }
+
+        if(this.magick <= 0){
+            console.log("Joseph's magick was completely drained. X.G Erudite's Chaotic spell has finished Joseph off.");
+            return true;
+        }
+
+        if(this.stamina <= 0){
+            console.log("Joseph is exhausted and can't move more.");
+            return true;
+        }
+
+        return false;
+    }
+
+    printDrinkingMessageAndStats(potionName, infoText, value, changedAttribute)
+    {
+        console.log(this.fullName + " drinks " + potionName + " and " + infoText + " " + value + " points of " + changedAttribute + ".");
+    }
+
+    showCharacterStats()
+    {
+        console.log(`Health:        ${this.health}`);
+        console.log(`Magick:        ${this.magick}`);
+        console.log(`Stamina:       ${this.stamina}`);
+        console.log(`--------------------------------`);
+    }
 }
