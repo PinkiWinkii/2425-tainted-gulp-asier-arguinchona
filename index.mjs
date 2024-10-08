@@ -10,7 +10,9 @@ const execute = async () => {
         const ingredientsData = await getIngredientsData();
         const playersData = await getCharactersData();
         // console.log(ingredientsData);
-        // console.log(playersData);
+        console.log(playersData.players[0].pouch_red);
+
+        const playersIngredientsPouch = playersData.players[0].pouch_red;
         
         
         //Creamos los ingredientes
@@ -18,7 +20,7 @@ const execute = async () => {
         
         const cauldron = new Cauldron(ingredients);
 
-        const potionBag = PotionBag.create(ingredients, cauldron);
+        const potionBag = PotionBag.create(playersIngredientsPouch, cauldron);
         console.log(potionBag);
         
         const potion1 = cauldron.createPotion("Bear Claws", "Bee");

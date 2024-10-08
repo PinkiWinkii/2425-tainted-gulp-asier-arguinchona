@@ -8,8 +8,8 @@ export default class PotionBag {
         let potions = [];
 
         for(let i = 0; i < ingredients.length; i++)
-        {
-            for(j = i + 1; j < ingredients.length; j++)
+        {     
+            for(let j = 1; j < ingredients.length; j++)
             {
                 potions.push(cauldron.createPotion(ingredients[i], ingredients[j]));
             }
