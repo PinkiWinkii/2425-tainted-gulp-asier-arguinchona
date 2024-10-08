@@ -33,7 +33,7 @@ export default  class Cauldron {
             //console.log("NORMAL POTION");
             return Potion.with(
                 common_effects[0],
-                ingredient1.weight + ingredient2.weight,
+                (ingredient1.weight + ingredient2.weight).toFixed(2),
                 ingredient1.value + ingredient2.value
             );
         }

@@ -21,7 +21,9 @@ const execute = async () => {
         const cauldron = new Cauldron(ingredients);
 
         const potionBag = PotionBag.create(playersIngredientsPouch, cauldron);
-        console.log(potionBag);
+        //console.log(potionBag);
+
+        showPotions(potionBag.potions)
         
         const potion1 = cauldron.createPotion("Bear Claws", "Bee");
         //console.log(potion1);
@@ -41,11 +43,17 @@ const execute = async () => {
 
 function showIngredients(ingredients)
 {
-    console.log("ENTERS FUNCTION");
-    
     for(let i = 0; i < ingredients.length; i++)
     {
         console.log("Ingredient: " + ingredients[i].name + " Effects: " + JSON.stringify(ingredients[i].effects));
+    }
+}
+
+function showPotions(potions)
+{
+    for(let i = 0; i < potions.length; i++)
+    {
+        showPotion(potions[i])
     }
 }
 
