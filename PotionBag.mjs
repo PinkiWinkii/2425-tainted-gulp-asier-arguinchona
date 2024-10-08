@@ -3,7 +3,7 @@ export default class PotionBag {
         this.potions = potions;
     }
 
-    create(ingredients, cauldron){
+    static create(ingredients, cauldron){
 
         let potions = [];
 
