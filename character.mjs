@@ -91,17 +91,17 @@ export default class Character{
     checkIfDrinkingOver()
     {
         if(this.health <= 0){
-            console.log("Joseph's HP has fallen bellow 0. Joseph has fainted.");
+            console.log(this.fullName + " has died.");
             return true;
         }
 
         if(this.magick <= 0){
-            console.log("Joseph's magick was completely drained. X.G Erudite's Chaotic spell has finished Joseph off.");
+            console.log(this.fullName + "'s magick was completely drained. X.G Erudite's Chaotic spell has finished Joseph off.");
             return true;
         }
 
         if(this.stamina <= 0){
-            console.log("Joseph is exhausted and can't move more.");
+            console.log(this.fullName + " has lost all his stamina. He feels completely exhausted.");
             return true;
         }
 

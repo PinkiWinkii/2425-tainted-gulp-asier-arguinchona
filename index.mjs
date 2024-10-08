@@ -11,7 +11,7 @@ const execute = async () => {
         const ingredientsData = await getIngredientsData();
         const playersData = await getCharactersData();
 
-        const playersIngredientsPouch = playersData.players[0].pouch_red;
+        const playersIngredientsPouch = playersData.players[0].pouch_yellow;
         
         const ingredients = Ingredients.load(ingredientsData);
         
