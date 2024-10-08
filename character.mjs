@@ -55,7 +55,10 @@ export default class Character{
     
                     case potionName.includes("Failed"):
                         console.log(potionName + ". " + this.fullName + " cannot drink.");
-                        
+                        break;
+
+                    default:
+                        this.drinkAnotherPotion(potionName);
                         break;
                 }
             }
@@ -106,6 +109,11 @@ export default class Character{
         }
 
         return false;
+    }
+
+    drinkAnotherPotion(potionName)
+    {
+        console.log(this.fullName + " drinks " + potionName + " and gains 1 point of health, magick & stamina.");
     }
 
     printDrinkingMessageAndStats(potionName, infoText, value, changedAttribute)
