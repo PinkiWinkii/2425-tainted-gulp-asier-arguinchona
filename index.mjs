@@ -11,8 +11,7 @@ const execute = async () => {
         const ingredientsData = await getIngredientsData();
         const playersData = await getCharactersData();
 
-        const playersIngredientsPouch = playersData.players[0].pouch_yellow;
-
+        //DIFFERENT POUCHES, YOU ARE ABLE TO INSERT THE POUCH YOU WANT FROM THESE 4 TO GET DIFFERENT RESULTS
         const yellowPouch =  playersData.players[0].pouch_yellow;
         const redPouch =  playersData.players[0].pouch_red;
         const greenPouch =  playersData.players[0].pouch_green;
@@ -22,6 +21,7 @@ const execute = async () => {
         
         const cauldron = new Cauldron(ingredients);
 
+        //CHANGE POUCH HERE TO CREATE DIFFERENT POTIONS
         const potionBag = PotionBag.create(yellowPouch, cauldron);
 
         const josephCharacter = Character.from(playersData.players[0], potionBag.potions);
