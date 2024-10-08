@@ -10,21 +10,14 @@ const execute = async () => {
     {
         const ingredientsData = await getIngredientsData();
         const playersData = await getCharactersData();
-        //console.log(ingredientsData);
-        //console.log(playersData.players[0]);
-
-        const joseph = playersData.players[0];
 
         const playersIngredientsPouch = playersData.players[0].pouch_red;
         
-        
-        //Creamos los ingredientes
         const ingredients = Ingredients.load(ingredientsData);
         
         const cauldron = new Cauldron(ingredients);
 
         const potionBag = PotionBag.create(playersIngredientsPouch, cauldron);
-        //console.log(potionBag);
 
         const josephCharacter = Character.from(playersData.players[0], potionBag.potions);
         
@@ -37,23 +30,10 @@ const execute = async () => {
         showCharacter(josephCharacter);
         josephCharacter.drinkEmAll();
 
-
-
-
-
-        //showIngredients(ingredients.ingredients);
     }
     catch
     {
         //ERROR
-    }
-}
-
-function showIngredients(ingredients)
-{
-    for(let i = 0; i < ingredients.length; i++)
-    {
-        console.log("Ingredient: " + ingredients[i].name + " Effects: " + JSON.stringify(ingredients[i].effects));
     }
 }
 
@@ -93,4 +73,5 @@ function showPotion(potion){
     console.log(`Time:          ${potion.time}`);
     console.log(`--------------------------------`);
 }
+
 execute();
