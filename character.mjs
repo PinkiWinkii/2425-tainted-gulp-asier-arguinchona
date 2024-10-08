@@ -8,7 +8,7 @@ export default class Character{
         this.potions = potions;
     }
 
-    from(playerData, potions){
-        return new Character(playerData.name, playerData.characterClass, playerData.health, playerData.magick, playerData.stamina, potions);
+    static from(playerData, potions){
+        return new Character(playerData.name, playerData.class, playerData.health, playerData.magick, playerData.stamina, potions);
     }
 }

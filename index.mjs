@@ -3,14 +3,17 @@ import Ingredients from "./ingredients.mjs";
 import Cauldron from "./cauldron.mjs";
 import { log } from "console";
 import PotionBag from "./PotionBag.mjs";
+import Character from "./character.mjs";
 
 const execute = async () => {
     try
     {
         const ingredientsData = await getIngredientsData();
         const playersData = await getCharactersData();
-        // console.log(ingredientsData);
-        console.log(playersData.players[0].pouch_red);
+        //console.log(ingredientsData);
+        //console.log(playersData.players[0]);
+
+        const joseph = playersData.players[0];
 
         const playersIngredientsPouch = playersData.players[0].pouch_red;
         
@@ -23,12 +26,12 @@ const execute = async () => {
         const potionBag = PotionBag.create(playersIngredientsPouch, cauldron);
         //console.log(potionBag);
 
-        showPotions(potionBag.potions)
+        const josephCharacter = Character.from(playersData.players[0], potionBag.potions);
+        //showPotions(potionBag.potions)
         
-        const potion1 = cauldron.createPotion("Bear Claws", "Bee");
-        //console.log(potion1);
+        //console.log(josephCharacter);
         
-        //showPotion(potion1);
+        showCharacter(josephCharacter);
 
 
 
@@ -46,6 +49,26 @@ function showIngredients(ingredients)
     for(let i = 0; i < ingredients.length; i++)
     {
         console.log("Ingredient: " + ingredients[i].name + " Effects: " + JSON.stringify(ingredients[i].effects));
+    }
+}
+
+function showCharacter(character)
+{
+    console.log(`${character.fullName}`);
+    console.log(`--------------------------------`);
+    console.log(`Health:        ${character.health}`);
+    console.log(`Magick:        ${character.magick}`);
+    console.log(`Stamina:       ${character.stamina}`);
+    showPotionsNames(character.potions);
+    console.log(`--------------------------------`);
+}
+
+function showPotionsNames(potions)
+{
+    for(let i = 0; i < potions.length; i++)
+    {
+        console.log("Potion " + (i+1) + ": " + potions[i].name);
+        
     }
 }
 
